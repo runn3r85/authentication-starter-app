@@ -6,8 +6,8 @@ FactoryGirl.define do
       "user#{n}@example.com"
     end
     sequence(:username) { |n| "TestUser#{n}" }
-    # password "math1234"
-    # password_confirmation "math1234"
+    password "math1234"
+    password_confirmation "math1234"
   end
 
 end

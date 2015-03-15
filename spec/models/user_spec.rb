@@ -4,6 +4,10 @@ RSpec.describe User, type: :model do
   context "validations" do
     let!(:user) { build(:user) }
 
+    before do
+      create(:user, email: "test@example.com")
+    end
+
     it "should require first_name" do
       expect(user).to validate_presence_of(:first_name)
     end
@@ -45,14 +49,21 @@ RSpec.describe User, type: :model do
     context "#downcase_email" do
       it "makes the email attribute lowercase" do
         user.email = "TEST@EXAMPLE.COM"
-        user.downcase_email
-        expect(user.email).to eq("test@example.com") 
+        expect{ user.downcase_email }.to change{ user.email }.
+          from("TEST@EXAMPLE.COM").
+          to("test@example.com") 
       end
 
       it "downcases an e-mail before saving" do
         user.email = "TEST@EXAMPLE.COM"
         expect(user.save).to be true
         expect(user.email).to eq("test@example.com")
+      end
+    end
+
+    context "#full_name" do
+      it "returns the full_name" do
+        expect(user.full_name).to eq(user.first_name + " " + user.last_name)
       end
     end
   end
