@@ -42,7 +42,7 @@ RSpec.describe UserSessionsController, type: :controller do
 
       it "sets flash[:success]" do
         post :create, email: user.email, password: "math1234"
-        expect(flash[:success]).to eq("Thank you for logging in!")
+        expect(flash[:success]).to eq("Thank you for signing in!")
       end
     end
 
@@ -54,7 +54,7 @@ RSpec.describe UserSessionsController, type: :controller do
 
        it "sets flash[:error]" do
         post :create, email: email, password: password
-        expect(flash[:error]).to eq("There was a problem logging in. Please check your email and password.")
+        expect(flash[:error]).to eq("There was a problem signing in. Please check your email and password.")
       end
     end
 

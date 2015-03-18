@@ -29,6 +29,8 @@ ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
+  config.include AuthenticationHelpers::Controller, type: :controller
+  config.include AuthenticationHelpers::Feature, type: :feature
   # config.include(ViewSpecHelper, type: :view)
   # config.before(:each, type: :view) { initialize_view_helpers(view) }
 

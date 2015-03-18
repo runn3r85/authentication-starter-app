@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/register', to: "users#new", as: :register
   resources :user_sessions, only: [:create]
   # resources :password_resets, only: [:new, :create, :edit, :update], path: "password"
-  resources :users, only: [:show, :create, :update]
+  resources :users, only: [:show, :create, :update, :edit, :destroy]
 
   get '/dashboard', to: 'pages#dashboard', as: :dashboard
 
